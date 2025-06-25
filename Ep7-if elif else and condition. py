@@ -1,0 +1,77 @@
+x=3
+if x == 0 :
+    print ('x == 0')
+elif x == 1 :
+    print ('x == 1')
+else:
+    print ('else')
+
+
+print('\n')
+print('--------------')
+name = 'Somsak'
+age = 12
+
+print(f'age = {age}')
+print('age == 12')
+print(age == 12)
+age == 12
+
+print('\n')
+print('--------------')
+print(f'age = {age}')
+print('if age == 12 : print...')
+if age == 12:
+    print('go to learn ป. 5')
+
+
+
+
+print('\n')
+print('--------------')
+print(f'age = {age}')
+print('if age != 12 : print...')
+if age != 12:
+    print('cannot go to learn ป. 5')
+
+
+
+
+print('\n')
+print('==============List=================')
+c_list = ['toyata' ,'benz', 'volvo']
+car = 'toyata'
+if car in c_list:
+    print('found')
+
+print('\n')
+print('===========Boolean===================')
+isTrue = True
+if isTrue == True : 
+    print('Yes')
+
+
+print('\n')
+print('===========Dictionary===================')
+m_dictionary = {'John':'0989992211', 'Smith':'0892223333'}
+
+
+'John' in m_dictionary # True  of False
+
+if 'John' in m_dictionary : 
+    print ('Found')
+
+copy_values = m_dictionary.values()
+print(copy_values)
+print(type(copy_values))
+
+copy_keys = m_dictionary.keys()
+print(copy_keys)
+print(type(copy_keys))
+
+if 'John' in m_dictionary  and 'Smith' in m_dictionary: 
+    print ('Found Both')
+
+if 'x' not in m_dictionary : 
+    print ('not found x')
+
