@@ -1,0 +1,8 @@
+a = None
+
+if a == 'b':
+    print('a == \'b\'')
+elif a is None:
+    print('a is None')
+else:
+    print('else ja')
