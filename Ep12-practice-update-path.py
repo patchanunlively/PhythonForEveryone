@@ -32,16 +32,47 @@ def save():
     T1.delete('1.0', END) 
 
 
+#update
+# path = os.getcwd() 
+# path = os.path.join(path , "Ep12")  
+# print('Path = ', path)
 
-path = os.getcwd() + "/Ep12"
+
+#------------------------------------
+# ตรวจสอบว่ารันในรูปแบบ executable (PyInstaller) หรือสคริปต์ Python ปกติ
+import sys # เพิ่มการ import sys
+
+if getattr(sys, 'frozen', False):
+    # ถ้าโปรแกรมถูกรันจาก PyInstaller executable (เช่น .app บน Mac)
+    # sys._MEIPASS คือ path ไปยังโฟลเดอร์ชั่วคราวที่ PyInstaller แตกไฟล์ resource ออกมา
+    # ถ้า resource (ไฟล์ .csv, .icns, .png) ถูกรวมไว้กับ executable โดย PyInstaller
+    # มันจะอยู่ที่นี่
+    bundle_dir = sys._MEIPASS
+else:
+    # ถ้าโปรแกรมรันเป็นสคริปต์ Python ปกติ
+    # os.path.dirname(os.path.abspath(__file__)) จะให้ path ของ directory ที่สคริปต์นี้อยู่
+    bundle_dir = os.path.dirname(os.path.abspath(__file__))
+
+# กำหนด path หลักที่โปรแกรมจะใช้
+# เนื่องจากไฟล์ Ep12.csv, flashcardIconMac.icns, flashcard.png อยู่ใน subfolder 'Ep12'
+# หรืออยู่คนละระดับกับตัว executable เราต้องปรับ path ให้ถูกต้อง
+# ถ้า Ep12.csv, flashcardIconMac.icns, flashcard.png อยู่ในโฟลเดอร์เดียวกันกับ Ep12-practice executable
+# ให้ใช้:
+# path = bundle_dir
+# แต่จากโครงสร้างที่คุณเคยบอกมาว่า path = os.path.join(path , "Ep12")  
+# แสดงว่าคุณต้องการให้ไฟล์ต่างๆ อยู่ในโฟลเดอร์ย่อยชื่อ 'Ep12'
+# ดังนั้นเราจะสร้าง path ที่ชี้ไปที่โฟลเดอร์ 'Ep12' ภายใน bundle_dir หรือ directory ที่สคริปต์อยู่
+path = os.path.join(bundle_dir, "Ep12") # สร้าง path ใหม่ให้ชี้ไปที่โฟลเดอร์ Ep12
+
+# ตรวจสอบว่าโฟลเดอร์ Ep12 มีอยู่หรือไม่ ถ้าไม่มี ให้สร้างขึ้นมา
+if not os.path.exists(path):
+    os.makedirs(path)
+
 print('Path = ', path)
-
-#------------------------------------
-
 #------------------------------------
 
 
-fileNameCsv = "Ep12.csv"
+fileNameCsv = "Ep12-update-path.csv"
 
 flashicon = os.path.join(path, 'flashcardIconMac.icns')
 

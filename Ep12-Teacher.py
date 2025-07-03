@@ -11,7 +11,7 @@ noteicon = os.path.join(path,'noteicon.ico')
 
 def writecsv(data):
     # data = ['john',14,500]j
-    csvfile = os.path.join(path,'knowlendge2.csv')
+    csvfile = os.path.join(path,'Ep12-Teacher.csv')
     with open(csvfile,'a',newline='',encoding='utf-8') as file:
         fw = csv.writer(file) # FW = File Writer
         fw.writerow(data)
@@ -58,10 +58,13 @@ B1.pack(pady=10,ipadx=20,ipady=10)
 
 #####################BUTTON FLASHCARD#########################
 def readcsv():
-    with open('knowlendge2.csv',newline='',encoding='utf-8') as file:
-        fr = csv.reader(file)
-        data = list(fr)
-        return data
+    try:
+        with open('Ep12-Teacher.csv',newline='',encoding='utf-8') as file:
+            fr = csv.reader(file)
+            data = list(fr)
+            return data
+    except:
+        pass
 
 knowledgelist = readcsv()
 print(knowledgelist)
